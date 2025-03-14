@@ -73,7 +73,6 @@ const saveBudgetDB = async (budget) => {
             const existingBudget = requestGet.result;
 
             if (existingBudget) {
-                console.log('Presupuesto encontrado, actualizando restante...');
                 existingBudget.remaining = budget.remaining; // Solo actualizamos el restante
 
                 const requestUpdate = objectStore.put(existingBudget);
@@ -81,7 +80,6 @@ const saveBudgetDB = async (budget) => {
                 requestUpdate.onsuccess = () => console.log('Presupuesto actualizado correctamente.');
                 requestUpdate.onerror = () => reject('Error al actualizar el presupuesto.');
             } else {
-                console.log('No se encontró presupuesto, agregando uno nuevo...');
                 budget.id = 1;
                 const requestAdd = objectStore.add(budget);
 
@@ -112,7 +110,6 @@ const saveExpenseDB = async(expense) => {
         };
 
         request.onerror = (e) => {
-            console.error('Error al agregar gasto', e);
             reject('No se pudo agregar el gasto');
         };
     });
@@ -138,7 +135,6 @@ const udateExpenseDB = async(id, dataUpdate) => {
         };
 
         request.onerror = (e) => {
-            console.error('Error al obtener el gasto para actualizar', e);
             reject('Error al obtener el gasto para actualizar');
         };
     }); 
@@ -155,7 +151,6 @@ const deleteExpenseDB = (id) => {
         };
 
         request.onerror = (e) => {
-            console.error('Error al eliminar gasto', e);
             reject('No se pudo eliminar el gasto');
         };
     });

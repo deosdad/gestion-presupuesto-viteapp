@@ -404,7 +404,6 @@ body {
   }
   .layout__section--secondary {
     height: 76vh;
-    margin-top: 3rem;
   }
   .modal_info {
     opacity: 0;
